@@ -158,19 +158,19 @@ function Navbar() {
   return (
     <nav
       className="w-full py-4 px-6 flex items-center justify-between shadow-sm"
-      style={{ backgroundColor: "#1a472a" }}
+      style={{ backgroundColor: "#0b0f1a" }}
     >
       <div className="flex items-center gap-3">
         <img
           src="/logo.png"
-          alt="Premium Fields"
+          alt="Axarat"
           className="h-9 w-auto"
           onError={(e) => {
             (e.currentTarget as HTMLImageElement).style.display = "none";
           }}
         />
         <span className="text-white font-bold text-base tracking-tight">
-          Premium Fields
+          Axarat
         </span>
       </div>
       <span className="text-white/60 text-sm hidden sm:block font-medium">
@@ -186,24 +186,23 @@ function Footer() {
   return (
     <footer
       className="w-full py-6 px-6"
-      style={{ backgroundColor: "#122e1c" }}
+      style={{ backgroundColor: "#05070d" }}
     >
       <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
         <div className="flex items-center gap-3">
           <img
             src="/logo.png"
-            alt="Premium Fields"
+            alt="Axarat"
             className="h-7 w-auto opacity-70"
             onError={(e) => {
               (e.currentTarget as HTMLImageElement).style.display = "none";
             }}
           />
           <p className="text-white/60 text-sm">
-            Powered by Premium Fields — Helping fresh fruit buyers reduce risk
-            and protect margins
+            Powered by Axarat — Real-time visibility for fresh produce importers
           </p>
         </div>
-        <p className="text-white/30 text-xs">© {new Date().getFullYear()} Premium Fields</p>
+        <p className="text-white/30 text-xs">© {new Date().getFullYear()} Axarat. All rights reserved.</p>
       </div>
     </footer>
   );
@@ -219,14 +218,14 @@ function ProgressBar({ current, total }: { current: number; total: number }) {
         <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">
           Question {current} of {total}
         </span>
-        <span className="text-xs font-bold" style={{ color: "#1a472a" }}>
+        <span className="text-xs font-bold" style={{ color: "#0b0f1a" }}>
           {Math.round(pct)}% Complete
         </span>
       </div>
       <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
         <div
           className="h-full rounded-full transition-all duration-500 ease-out"
-          style={{ width: `${pct}%`, backgroundColor: "#f97316" }}
+          style={{ width: `${pct}%`, backgroundColor: "#00e5c8" }}
         />
       </div>
     </div>
@@ -320,19 +319,19 @@ function LandingScreen({ onStart }: { onStart: () => void }) {
       {/* Hero */}
       <section
         className="relative overflow-hidden py-20 px-6"
-        style={{ backgroundColor: "#1a472a" }}
+        style={{ backgroundColor: "#0b0f1a" }}
       >
         <div
           className="absolute inset-0 opacity-[0.07] pointer-events-none"
           style={{
             backgroundImage:
-              "radial-gradient(ellipse 60% 80% at 20% 50%, #ffffff, transparent), radial-gradient(ellipse 50% 60% at 85% 10%, #f97316, transparent)",
+              "radial-gradient(ellipse 60% 80% at 20% 50%, #ffffff, transparent), radial-gradient(ellipse 50% 60% at 85% 10%, #00e5c8, transparent)",
           }}
         />
         <div className="relative max-w-3xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 px-4 py-1.5 mb-8">
             <span
-              className="w-2 h-2 rounded-full bg-orange-400"
+              className="w-2 h-2 rounded-full bg-[#00e5c8]"
               style={{ animation: "pulse 2s cubic-bezier(0.4,0,0.6,1) infinite" }}
             />
             <span className="text-white/90 text-xs font-bold uppercase tracking-widest">
@@ -343,7 +342,7 @@ function LandingScreen({ onStart }: { onStart: () => void }) {
           <h1 className="text-4xl sm:text-5xl font-black text-white leading-tight mb-5">
             Is Your Cold Chain Putting
             <br />
-            <span style={{ color: "#f97316" }}>Your Fruit at Risk?</span>
+            <span style={{ color: "#00e5c8" }}>Your Fruit at Risk?</span>
           </h1>
 
           <p className="text-white/70 text-lg sm:text-xl max-w-xl mx-auto leading-relaxed mb-10">
@@ -353,8 +352,8 @@ function LandingScreen({ onStart }: { onStart: () => void }) {
 
           <button
             onClick={onStart}
-            className="group inline-flex items-center gap-2.5 text-white text-lg font-bold px-10 py-4 rounded-xl shadow-xl transition-all duration-200 hover:shadow-2xl hover:scale-105 active:scale-95"
-            style={{ backgroundColor: "#f97316" }}
+            className="group inline-flex items-center gap-2.5 text-[#0b0f1a] text-lg font-bold px-10 py-4 rounded-xl shadow-xl transition-all duration-200 hover:shadow-2xl hover:scale-105 active:scale-95"
+            style={{ backgroundColor: "#00e5c8" }}
           >
             Get My Risk Score
             <svg
@@ -383,7 +382,7 @@ function LandingScreen({ onStart }: { onStart: () => void }) {
         <div className="max-w-4xl mx-auto">
           <p
             className="text-center text-xs font-bold uppercase tracking-widest mb-10"
-            style={{ color: "#1a472a" }}
+            style={{ color: "#0b0f1a" }}
           >
             What You&apos;ll Get
           </p>
@@ -412,7 +411,7 @@ function LandingScreen({ onStart }: { onStart: () => void }) {
                 <span className="text-4xl mb-4">{f.icon}</span>
                 <h3
                   className="font-bold text-sm mb-2 uppercase tracking-wide"
-                  style={{ color: "#1a472a" }}
+                  style={{ color: "#0b0f1a" }}
                 >
                   {f.title}
                 </h3>
@@ -484,7 +483,7 @@ function AssessmentScreen({
   return (
     <div
       className="flex-1 flex flex-col py-10 px-6"
-      style={{ backgroundColor: "#f8faf8" }}
+      style={{ backgroundColor: "#f8fafc" }}
     >
       <div className="max-w-2xl mx-auto w-full">
         <ProgressBar current={currentIndex + 1} total={QUESTIONS.length} />
@@ -497,7 +496,7 @@ function AssessmentScreen({
           <div className="flex items-center gap-3 mb-6">
             <span
               className="flex-none w-8 h-8 rounded-full flex items-center justify-center text-sm font-black text-white"
-              style={{ backgroundColor: "#1a472a" }}
+              style={{ backgroundColor: "#0b0f1a" }}
             >
               {currentIndex + 1}
             </span>
@@ -519,16 +518,16 @@ function AssessmentScreen({
                   onClick={() => handleSelect(aIndex)}
                   className="w-full text-left px-5 py-4 rounded-xl border-2 transition-all duration-150 flex items-center gap-4 font-medium text-sm sm:text-base"
                   style={{
-                    borderColor: isSelected ? "#1a472a" : "#e5e7eb",
+                    borderColor: isSelected ? "#0b0f1a" : "#e5e7eb",
                     backgroundColor: isSelected ? "#f0fdf4" : "#fafafa",
-                    color: isSelected ? "#1a472a" : "#374151",
+                    color: isSelected ? "#0b0f1a" : "#374151",
                   }}
                 >
                   <span
                     className="flex-none w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all"
                     style={{
-                      borderColor: isSelected ? "#1a472a" : "#d1d5db",
-                      backgroundColor: isSelected ? "#1a472a" : "transparent",
+                      borderColor: isSelected ? "#0b0f1a" : "#d1d5db",
+                      backgroundColor: isSelected ? "#0b0f1a" : "transparent",
                     }}
                   >
                     {isSelected && (
@@ -567,8 +566,8 @@ function AssessmentScreen({
           <button
             onClick={handleNext}
             disabled={!canProceed}
-            className="flex items-center gap-2 px-7 py-2.5 rounded-lg text-white font-bold text-sm transition-all hover:scale-105 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
-            style={{ backgroundColor: "#f97316" }}
+            className="flex items-center gap-2 px-7 py-2.5 rounded-lg text-[#0b0f1a] font-bold text-sm transition-all hover:scale-105 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
+            style={{ backgroundColor: "#00e5c8" }}
           >
             {isLast ? "See My Results" : "Next Question"}
             <svg
@@ -619,7 +618,7 @@ function ResultsScreen({
   const rankColors = ["#dc2626", "#ea580c", "#b45309"];
 
   const reportText = [
-    "COLD CHAIN RISK REPORT — Premium Fields",
+    "COLD CHAIN RISK REPORT — Axarat",
     `Generated: ${new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}`,
     "─".repeat(52),
     `OVERALL SCORE: ${total} / ${maxScore}`,
@@ -645,8 +644,9 @@ function ResultsScreen({
     ),
     "",
     "─".repeat(52),
-    "Want to fix this? Premium Fields helps fresh fruit buyers build cold chain",
-    "protocols that prevent quality failures. Visit premiumfields.com",
+    "Want to fix this? Axarat helps fresh fruit buyers build cold chain",
+    "protocols that prevent quality failures.",
+    "Start your 15-day pilot: axarat.com/#contact",
   ].join("\n");
 
   async function handleCopy() {
@@ -662,14 +662,14 @@ function ResultsScreen({
   return (
     <div
       className="flex-1 flex flex-col py-12 px-6"
-      style={{ backgroundColor: "#f8faf8" }}
+      style={{ backgroundColor: "#f8fafc" }}
     >
       <div className="max-w-2xl mx-auto w-full space-y-6">
         {/* Header */}
         <div className="text-center animate-fade-in-up">
           <p
             className="text-xs font-bold uppercase tracking-widest mb-2"
-            style={{ color: "#f97316" }}
+            style={{ color: "#007a6b" }}
           >
             Assessment Complete
           </p>
@@ -739,8 +739,8 @@ function ResultsScreen({
                       Q{i + 1}: {QUESTIONS[i].text}
                     </p>
                     <span
-                      className="flex-none text-xs font-black px-2.5 py-0.5 rounded-full text-white"
-                      style={{ backgroundColor: "#f97316" }}
+                      className="flex-none text-xs font-black px-2.5 py-0.5 rounded-full text-[#0b0f1a]"
+                      style={{ backgroundColor: "#00e5c8" }}
                     >
                       {pts} pts
                     </span>
@@ -762,7 +762,7 @@ function ResultsScreen({
         <div
           className="rounded-2xl p-8 animate-fade-in-up"
           style={{
-            backgroundColor: "#1a472a",
+            backgroundColor: "#0b0f1a",
             animationDelay: "0.3s",
             animationFillMode: "both",
             opacity: 0,
@@ -775,36 +775,23 @@ function ResultsScreen({
                 Want to fix this?
               </h3>
               <p className="text-white/75 text-sm leading-relaxed mb-5">
-                Premium Fields helps fresh fruit buyers build cold chain
+                Axarat helps fresh fruit buyers build cold chain
                 protocols that prevent quality failures. Whether you&apos;re
                 dealing with recurring rejections, carrier disputes, or supplier
                 compliance gaps — we&apos;ve seen it and solved it.
                 <br />
                 <span className="text-white/90 font-semibold">
-                  Reply to this email or visit premiumfields.com
+                  Reply to this email or visit axarat.com
                 </span>
               </p>
               <a
-                href="https://premiumfields.com"
+                href="https://axarat.com/#contact"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-white font-bold text-sm px-6 py-3 rounded-lg transition-all hover:scale-105 active:scale-95"
-                style={{ backgroundColor: "#f97316" }}
+                className="inline-flex items-center gap-2 text-[#0b0f1a] font-bold text-sm px-6 py-3 rounded-lg transition-all hover:scale-105 active:scale-95"
+                style={{ backgroundColor: "#00e5c8" }}
               >
-                Visit premiumfields.com
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2.5}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
+                Start your 15-day pilot →
               </a>
             </div>
           </div>
@@ -821,7 +808,7 @@ function ResultsScreen({
               setTimeout(() => reportRef.current?.select(), 100);
             }}
             className="flex-1 flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border-2 font-bold text-sm transition-all hover:scale-105 active:scale-95 bg-white"
-            style={{ borderColor: "#1a472a", color: "#1a472a" }}
+            style={{ borderColor: "#0b0f1a", color: "#0b0f1a" }}
           >
             <svg
               className="w-4 h-4"
@@ -868,8 +855,8 @@ function ResultsScreen({
               </h3>
               <button
                 onClick={handleCopy}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold text-white transition-all hover:scale-105 active:scale-95"
-                style={{ backgroundColor: copied ? "#16a34a" : "#f97316" }}
+                className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all hover:scale-105 active:scale-95"
+                style={{ backgroundColor: copied ? "#16a34a" : "#00e5c8", color: copied ? "#ffffff" : "#0b0f1a" }}
               >
                 {copied ? (
                   <>

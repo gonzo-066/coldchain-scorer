@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Cold Chain Risk Scorer | Premium Fields",
+  title: "Cold Chain Risk Scorer | Axarat",
   description:
     "Answer 10 quick questions to get your Cold Chain Risk Score — and find out where your fresh fruit operation is most exposed.",
   openGraph: {
-    title: "Cold Chain Risk Scorer | Premium Fields",
+    title: "Cold Chain Risk Scorer | Axarat",
     description:
       "Is your cold chain putting your fruit at risk? Take the 10-question assessment.",
     type: "website",
