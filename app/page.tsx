@@ -644,9 +644,10 @@ function ResultsScreen({
     ),
     "",
     "─".repeat(52),
-    "Want to fix this? Axarat helps fresh fruit buyers build cold chain",
-    "protocols that prevent quality failures.",
-    "Start your 15-day pilot: axarat.com/#contact",
+    "Want to fix this? Axarat gives fresh produce importers real-time",
+    "visibility into every container's cold chain status — so",
+    "temperature problems surface before the fruit arrives.",
+    "See how Axarat works: axarat.com/#contact",
   ].join("\n");
 
   async function handleCopy() {
@@ -775,10 +776,9 @@ function ResultsScreen({
                 Want to fix this?
               </h3>
               <p className="text-white/75 text-sm leading-relaxed mb-5">
-                Axarat helps fresh fruit buyers build cold chain
-                protocols that prevent quality failures. Whether you&apos;re
-                dealing with recurring rejections, carrier disputes, or supplier
-                compliance gaps — we&apos;ve seen it and solved it.
+                Axarat gives fresh produce importers real-time visibility into
+                every container&apos;s cold chain status — so temperature
+                problems surface before the fruit arrives.
                 <br />
                 <span className="text-white/90 font-semibold">
                   Reply to this email or visit axarat.com
@@ -791,7 +791,7 @@ function ResultsScreen({
                 className="inline-flex items-center gap-2 text-[#0b0f1a] font-bold text-sm px-6 py-3 rounded-lg transition-all hover:scale-105 active:scale-95"
                 style={{ backgroundColor: "#00e5c8" }}
               >
-                Start your 15-day pilot →
+                See how Axarat works →
               </a>
             </div>
           </div>
