@@ -619,7 +619,7 @@ function ResultsScreen({
     "Want to fix this? Axarat gives fresh produce importers real-time",
     "visibility into every container's cold chain status — so",
     "temperature problems surface before the fruit arrives.",
-    "See how Axarat works: axarat.com/#contact",
+    "Start your 15-day pilot: axarat.com/#contact",
   ].join("\n");
 
   async function handleCopy() {
@@ -743,7 +743,16 @@ function ResultsScreen({
                 problems surface before the fruit arrives.
                 <br />
                 <span className="text-on-dark font-semibold">
-                  Reply to this email or visit axarat.com
+                  Visit{" "}
+                  <a
+                    href="https://axarat.com/#contact"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline text-accent font-bold hover:brightness-125"
+                  >
+                    axarat.com
+                  </a>{" "}
+                  to see how it works
                 </span>
               </p>
               <a
@@ -752,7 +761,7 @@ function ResultsScreen({
                 rel="noopener noreferrer"
                 className="btn-primary inline-flex items-center gap-2 text-sm px-6 py-3 transition-all hover:scale-105 active:scale-95"
               >
-                See how Axarat works →
+                Start your 15-day pilot →
               </a>
             </div>
           </div>
