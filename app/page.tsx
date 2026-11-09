@@ -126,26 +126,26 @@ function getRiskLevel(score: number) {
   if (score <= 30)
     return {
       level: "LOW RISK",
-      color: "#16a34a",
-      bg: "#f0fdf4",
-      border: "#86efac",
+      color: "oklch(0.72 0.14 160)",
+      bg: "oklch(0.72 0.14 160 / 0.12)",
+      border: "oklch(0.72 0.14 160 / 0.35)",
       message: "Your cold chain is well managed. Keep it up.",
       icon: "✓",
     };
   if (score <= 70)
     return {
       level: "MEDIUM RISK",
-      color: "#b45309",
-      bg: "#fffbeb",
-      border: "#fcd34d",
+      color: "oklch(0.8 0.14 75)",
+      bg: "oklch(0.8 0.14 75 / 0.12)",
+      border: "oklch(0.8 0.14 75 / 0.35)",
       message: "There are gaps in your cold chain that could be costing you.",
       icon: "⚠",
     };
   return {
     level: "HIGH RISK",
-    color: "#dc2626",
-    bg: "#fef2f2",
-    border: "#fca5a5",
+    color: "oklch(0.577 0.245 27)",
+    bg: "oklch(0.577 0.245 27 / 0.12)",
+    border: "oklch(0.577 0.245 27 / 0.35)",
     message:
       "Your cold chain has critical vulnerabilities. Action needed now.",
     icon: "✕",
@@ -156,10 +156,7 @@ function getRiskLevel(score: number) {
 
 function Navbar() {
   return (
-    <nav
-      className="w-full py-4 px-6 flex items-center justify-between shadow-sm"
-      style={{ backgroundColor: "#0b0f1a" }}
-    >
+    <nav className="w-full py-4 px-6 flex items-center justify-between shadow-sm bg-hero border-b border-line-dark">
       <div className="flex items-center gap-3">
         <img
           src="/logo.png"
@@ -169,11 +166,11 @@ function Navbar() {
             (e.currentTarget as HTMLImageElement).style.display = "none";
           }}
         />
-        <span className="text-white font-bold text-base tracking-tight">
+        <span className="text-accent-gradient font-heading font-extrabold text-base uppercase tracking-widest">
           Axarat
         </span>
       </div>
-      <span className="text-white/60 text-sm hidden sm:block font-medium">
+      <span className="text-on-dark-muted text-sm hidden sm:block font-medium">
         Cold Chain Risk Scorer
       </span>
     </nav>
@@ -184,10 +181,7 @@ function Navbar() {
 
 function Footer() {
   return (
-    <footer
-      className="w-full py-6 px-6"
-      style={{ backgroundColor: "#05070d" }}
-    >
+    <footer className="w-full py-6 px-6 bg-navy border-t border-line-dark">
       <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
         <div className="flex items-center gap-3">
           <img
@@ -198,11 +192,11 @@ function Footer() {
               (e.currentTarget as HTMLImageElement).style.display = "none";
             }}
           />
-          <p className="text-white/60 text-sm">
-            Powered by Axarat — Real-time visibility for fresh produce importers
+          <p className="text-on-dark-muted text-sm">
+            Powered by <span className="text-accent font-semibold">Axarat</span> — Real-time visibility for fresh produce importers
           </p>
         </div>
-        <p className="text-white/30 text-xs">© {new Date().getFullYear()} Axarat. All rights reserved.</p>
+        <p className="text-on-dark-muted text-xs">© {new Date().getFullYear()} Axarat. All rights reserved.</p>
       </div>
     </footer>
   );
@@ -215,17 +209,17 @@ function ProgressBar({ current, total }: { current: number; total: number }) {
   return (
     <div className="w-full max-w-2xl mx-auto mb-8">
       <div className="flex justify-between items-center mb-2">
-        <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">
-          Question {current} of {total}
+        <span className="text-xs font-bold text-on-dark-muted uppercase tracking-widest">
+          Question <span className="font-mono">{current}</span> of <span className="font-mono">{total}</span>
         </span>
-        <span className="text-xs font-bold" style={{ color: "#0b0f1a" }}>
-          {Math.round(pct)}% Complete
+        <span className="text-xs font-bold text-accent">
+          <span className="font-mono">{Math.round(pct)}%</span> Complete
         </span>
       </div>
-      <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+      <div className="w-full h-2 bg-graphite rounded-full overflow-hidden">
         <div
-          className="h-full rounded-full transition-all duration-500 ease-out"
-          style={{ width: `${pct}%`, backgroundColor: "#00e5c8" }}
+          className="h-full rounded-full transition-all duration-500 ease-out bg-accent-gradient"
+          style={{ width: `${pct}%` }}
         />
       </div>
     </div>
@@ -277,7 +271,7 @@ function ScoreGauge({
           cy="105"
           r={radius}
           fill="none"
-          stroke="#e5e7eb"
+          stroke="#273449"
           strokeWidth="16"
         />
         <circle
@@ -298,12 +292,12 @@ function ScoreGauge({
       </svg>
       <div className="absolute flex flex-col items-center select-none">
         <span
-          className="text-5xl font-black tabular-nums leading-none"
+          className="text-5xl font-black font-mono tabular-nums leading-none"
           style={{ color: riskColor }}
         >
           {displayScore}
         </span>
-        <span className="text-sm text-gray-400 font-medium mt-1">
+        <span className="text-sm text-on-dark-muted font-mono font-medium mt-1">
           / {maxScore}
         </span>
       </div>
@@ -317,43 +311,32 @@ function LandingScreen({ onStart }: { onStart: () => void }) {
   return (
     <div className="flex-1 flex flex-col">
       {/* Hero */}
-      <section
-        className="relative overflow-hidden py-20 px-6"
-        style={{ backgroundColor: "#0b0f1a" }}
-      >
-        <div
-          className="absolute inset-0 opacity-[0.07] pointer-events-none"
-          style={{
-            backgroundImage:
-              "radial-gradient(ellipse 60% 80% at 20% 50%, #ffffff, transparent), radial-gradient(ellipse 50% 60% at 85% 10%, #00e5c8, transparent)",
-          }}
-        />
+      <section className="relative overflow-hidden py-20 px-6 bg-hero">
         <div className="relative max-w-3xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 px-4 py-1.5 mb-8">
+          <div className="inline-flex items-center gap-2 rounded-full bg-white/5 border border-line-dark px-4 py-1.5 mb-8">
             <span
-              className="w-2 h-2 rounded-full bg-[#00e5c8]"
+              className="w-2 h-2 rounded-full bg-accent"
               style={{ animation: "pulse 2s cubic-bezier(0.4,0,0.6,1) infinite" }}
             />
-            <span className="text-white/90 text-xs font-bold uppercase tracking-widest">
+            <span className="text-on-dark text-xs font-bold uppercase tracking-widest">
               Free Assessment Tool
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl font-black text-white leading-tight mb-5">
+          <h1 className="text-4xl sm:text-5xl font-black text-on-dark leading-tight mb-5">
             Is Your Cold Chain Putting
             <br />
-            <span style={{ color: "#00e5c8" }}>Your Fruit at Risk?</span>
+            <span className="text-accent">Your Fruit at Risk?</span>
           </h1>
 
-          <p className="text-white/70 text-lg sm:text-xl max-w-xl mx-auto leading-relaxed mb-10">
+          <p className="text-on-dark-muted text-lg sm:text-xl max-w-xl mx-auto leading-relaxed mb-10">
             Answer 10 quick questions to get your Cold Chain Risk Score — and
             find out where your operation is most exposed.
           </p>
 
           <button
             onClick={onStart}
-            className="group inline-flex items-center gap-2.5 text-[#0b0f1a] text-lg font-bold px-10 py-4 rounded-xl shadow-xl transition-all duration-200 hover:shadow-2xl hover:scale-105 active:scale-95"
-            style={{ backgroundColor: "#00e5c8" }}
+            className="btn-primary group inline-flex items-center gap-2.5 text-lg px-10 py-4 shadow-xl transition-all duration-200 hover:shadow-2xl hover:scale-105 active:scale-95"
           >
             Get My Risk Score
             <svg
@@ -371,19 +354,16 @@ function LandingScreen({ onStart }: { onStart: () => void }) {
             </svg>
           </button>
 
-          <p className="text-white/40 text-sm mt-5">
+          <p className="text-on-dark-muted text-sm mt-5">
             Takes less than 3 minutes · No account required
           </p>
         </div>
       </section>
 
       {/* Features */}
-      <section className="bg-white py-16 px-6">
+      <section className="py-16 px-6">
         <div className="max-w-4xl mx-auto">
-          <p
-            className="text-center text-xs font-bold uppercase tracking-widest mb-10"
-            style={{ color: "#0b0f1a" }}
-          >
+          <p className="text-center text-xs font-bold uppercase tracking-widest mb-10 text-accent">
             What You&apos;ll Get
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -406,16 +386,13 @@ function LandingScreen({ onStart }: { onStart: () => void }) {
             ].map((f) => (
               <div
                 key={f.title}
-                className="flex flex-col items-center text-center p-7 rounded-2xl border border-gray-100 bg-gray-50 hover:shadow-md transition-shadow duration-200"
+                className="card flex flex-col items-center text-center p-7 transition-colors duration-200 hover:border-accent/40"
               >
                 <span className="text-4xl mb-4">{f.icon}</span>
-                <h3
-                  className="font-bold text-sm mb-2 uppercase tracking-wide"
-                  style={{ color: "#0b0f1a" }}
-                >
+                <h3 className="font-bold text-sm mb-2 uppercase tracking-wide text-on-dark">
                   {f.title}
                 </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{f.desc}</p>
+                <p className="text-sm text-on-dark-muted leading-relaxed">{f.desc}</p>
               </div>
             ))}
           </div>
@@ -423,8 +400,8 @@ function LandingScreen({ onStart }: { onStart: () => void }) {
       </section>
 
       {/* Commodity strip */}
-      <div className="border-t border-gray-100 bg-gray-50 py-5 px-6">
-        <div className="max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-sm font-medium text-gray-500">
+      <div className="border-t border-line-dark bg-ocean/40 py-5 px-6">
+        <div className="max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-sm font-medium text-on-dark-muted">
           {["🍇 Table Grapes", "🍊 Citrus", "🍑 Stonefruit", "🫐 Berries", "🥭 Tropical"].map(
             (item) => (
               <span key={item}>{item}</span>
@@ -481,31 +458,25 @@ function AssessmentScreen({
   }
 
   return (
-    <div
-      className="flex-1 flex flex-col py-10 px-6"
-      style={{ backgroundColor: "#f8fafc" }}
-    >
+    <div className="flex-1 flex flex-col py-10 px-6">
       <div className="max-w-2xl mx-auto w-full">
         <ProgressBar current={currentIndex + 1} total={QUESTIONS.length} />
 
         {/* Card */}
         <div
           key={animKey}
-          className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 sm:p-10 animate-fade-in-up"
+          className="card p-8 sm:p-10 animate-fade-in-up"
         >
           <div className="flex items-center gap-3 mb-6">
-            <span
-              className="flex-none w-8 h-8 rounded-full flex items-center justify-center text-sm font-black text-white"
-              style={{ backgroundColor: "#0b0f1a" }}
-            >
+            <span className="flex-none w-8 h-8 rounded-full flex items-center justify-center text-sm font-black font-mono text-accent bg-accent/10 border border-accent/40">
               {currentIndex + 1}
             </span>
-            <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">
+            <span className="text-xs font-bold text-on-dark-muted uppercase tracking-widest">
               Cold Chain Assessment
             </span>
           </div>
 
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-8 leading-snug">
+          <h2 className="text-xl sm:text-2xl font-bold text-on-dark mb-8 leading-snug">
             {q.text}
           </h2>
 
@@ -516,22 +487,21 @@ function AssessmentScreen({
                 <button
                   key={aIndex}
                   onClick={() => handleSelect(aIndex)}
-                  className="w-full text-left px-5 py-4 rounded-xl border-2 transition-all duration-150 flex items-center gap-4 font-medium text-sm sm:text-base"
-                  style={{
-                    borderColor: isSelected ? "#0b0f1a" : "#e5e7eb",
-                    backgroundColor: isSelected ? "#f0fdf4" : "#fafafa",
-                    color: isSelected ? "#0b0f1a" : "#374151",
-                  }}
+                  className={`w-full text-left px-5 py-4 rounded-xl border-2 transition-all duration-150 flex items-center gap-4 font-medium text-sm sm:text-base ${
+                    isSelected
+                      ? "border-accent bg-accent/10 text-on-dark"
+                      : "border-graphite bg-navy/60 text-on-dark-muted hover:border-accent"
+                  }`}
                 >
                   <span
-                    className="flex-none w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all"
-                    style={{
-                      borderColor: isSelected ? "#0b0f1a" : "#d1d5db",
-                      backgroundColor: isSelected ? "#0b0f1a" : "transparent",
-                    }}
+                    className={`flex-none w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all ${
+                      isSelected
+                        ? "border-accent bg-accent"
+                        : "border-graphite bg-transparent"
+                    }`}
                   >
                     {isSelected && (
-                      <span className="w-2 h-2 rounded-full bg-white" />
+                      <span className="w-2 h-2 rounded-full bg-navy" />
                     )}
                   </span>
                   {a.label}
@@ -545,7 +515,7 @@ function AssessmentScreen({
         <div className="flex items-center justify-between mt-6">
           <button
             onClick={onBack}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-lg border-2 border-gray-200 text-gray-600 font-semibold text-sm transition-all hover:border-gray-300 hover:bg-white active:scale-95"
+            className="btn-secondary flex items-center gap-2 px-5 py-2.5 font-semibold text-sm transition-all active:scale-95"
           >
             <svg
               className="w-4 h-4"
@@ -566,8 +536,7 @@ function AssessmentScreen({
           <button
             onClick={handleNext}
             disabled={!canProceed}
-            className="flex items-center gap-2 px-7 py-2.5 rounded-lg text-[#0b0f1a] font-bold text-sm transition-all hover:scale-105 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
-            style={{ backgroundColor: "#00e5c8" }}
+            className="btn-primary flex items-center gap-2 px-7 py-2.5 text-sm transition-all hover:scale-105 active:scale-95 disabled:hover:scale-100"
           >
             {isLast ? "See My Results" : "Next Question"}
             <svg
@@ -615,7 +584,10 @@ function ResultsScreen({
     .sort((a, b) => b.pts - a.pts)
     .slice(0, 3);
 
-  const rankColors = ["#dc2626", "#ea580c", "#b45309"];
+  // Rank 1/2/3 → danger / warning / accent. Warning and accent are light
+  // fills, so their numbers go in navy; white stays on the danger fill.
+  const rankColors = ["oklch(0.577 0.245 27)", "oklch(0.8 0.14 75)", "#35C8E8"];
+  const rankTextColors = ["#ffffff", "#0B1424", "#0B1424"];
 
   const reportText = [
     "COLD CHAIN RISK REPORT — Axarat",
@@ -661,27 +633,21 @@ function ResultsScreen({
   }
 
   return (
-    <div
-      className="flex-1 flex flex-col py-12 px-6"
-      style={{ backgroundColor: "#f8fafc" }}
-    >
+    <div className="flex-1 flex flex-col py-12 px-6">
       <div className="max-w-2xl mx-auto w-full space-y-6">
         {/* Header */}
         <div className="text-center animate-fade-in-up">
-          <p
-            className="text-xs font-bold uppercase tracking-widest mb-2"
-            style={{ color: "#007a6b" }}
-          >
+          <p className="text-xs font-bold uppercase tracking-widest mb-2 text-accent">
             Assessment Complete
           </p>
-          <h1 className="text-3xl sm:text-4xl font-black text-gray-900">
+          <h1 className="text-3xl sm:text-4xl font-black text-on-dark">
             Your Cold Chain Risk Report
           </h1>
         </div>
 
         {/* Score card */}
         <div
-          className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 animate-fade-in-up"
+          className="card p-8 animate-fade-in-up"
           style={{ animationDelay: "0.1s", animationFillMode: "both", opacity: 0 }}
         >
           <div className="flex flex-col sm:flex-row items-center gap-8">
@@ -700,11 +666,11 @@ function ResultsScreen({
                 <span className="text-base">{risk.icon}</span>
                 {risk.level}
               </div>
-              <p className="text-gray-700 leading-relaxed">{risk.message}</p>
-              <p className="text-gray-400 text-sm mt-3">
+              <p className="text-on-dark leading-relaxed">{risk.message}</p>
+              <p className="text-on-dark-muted text-sm mt-3">
                 Score:{" "}
-                <strong className="text-gray-700 font-bold">{total}</strong> out
-                of {maxScore} possible points
+                <strong className="text-on-dark font-bold font-mono">{total}</strong> out
+                of <span className="font-mono">{maxScore}</span> possible points
               </p>
             </div>
           </div>
@@ -712,13 +678,13 @@ function ResultsScreen({
 
         {/* Top 3 */}
         <div
-          className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 animate-fade-in-up"
+          className="card p-8 animate-fade-in-up"
           style={{ animationDelay: "0.2s", animationFillMode: "both", opacity: 0 }}
         >
-          <h2 className="font-black text-lg text-gray-900 mb-1">
+          <h2 className="font-black text-lg text-on-dark mb-1">
             Your Top 3 Vulnerabilities
           </h2>
-          <p className="text-sm text-gray-400 mb-6">
+          <p className="text-sm text-on-dark-muted mb-6">
             These are the cold chain areas where your operation is most exposed
             right now.
           </p>
@@ -726,31 +692,28 @@ function ResultsScreen({
             {top3.map(({ i, pts }, rank) => (
               <div
                 key={i}
-                className="flex gap-4 p-5 rounded-xl border border-gray-100 bg-gray-50"
+                className="flex gap-4 p-5 rounded-lg border border-line-dark bg-navy/60"
               >
                 <div
-                  className="flex-none w-8 h-8 rounded-full flex items-center justify-center text-sm font-black text-white mt-0.5"
-                  style={{ backgroundColor: rankColors[rank] }}
+                  className="flex-none w-8 h-8 rounded-full flex items-center justify-center text-sm font-black font-mono mt-0.5"
+                  style={{ backgroundColor: rankColors[rank], color: rankTextColors[rank] }}
                 >
                   {rank + 1}
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-wrap items-start gap-2 mb-1">
-                    <p className="text-sm font-bold text-gray-800 flex-1">
+                    <p className="text-sm font-bold text-on-dark flex-1">
                       Q{i + 1}: {QUESTIONS[i].text}
                     </p>
-                    <span
-                      className="flex-none text-xs font-black px-2.5 py-0.5 rounded-full text-[#0b0f1a]"
-                      style={{ backgroundColor: "#00e5c8" }}
-                    >
+                    <span className="flex-none text-xs font-black font-mono px-2.5 py-0.5 rounded-full text-accent bg-accent/10 border border-accent/40">
                       {pts} pts
                     </span>
                   </div>
-                  <p className="text-xs text-gray-400 italic mb-2">
+                  <p className="text-xs text-on-dark-muted italic mb-2">
                     Your answer: &ldquo;
                     {QUESTIONS[i].answers[answers[i]!].label}&rdquo;
                   </p>
-                  <p className="text-sm text-gray-700 leading-relaxed">
+                  <p className="text-sm text-on-dark leading-relaxed">
                     {RECOMMENDATIONS[i]}
                   </p>
                 </div>
@@ -761,9 +724,8 @@ function ResultsScreen({
 
         {/* CTA */}
         <div
-          className="rounded-2xl p-8 animate-fade-in-up"
+          className="card p-8 animate-fade-in-up"
           style={{
-            backgroundColor: "#0b0f1a",
             animationDelay: "0.3s",
             animationFillMode: "both",
             opacity: 0,
@@ -772,15 +734,15 @@ function ResultsScreen({
           <div className="flex items-start gap-4">
             <span className="text-3xl flex-none mt-0.5">🎯</span>
             <div>
-              <h3 className="font-black text-white text-lg mb-2">
+              <h3 className="font-black text-on-dark text-lg mb-2">
                 Want to fix this?
               </h3>
-              <p className="text-white/75 text-sm leading-relaxed mb-5">
+              <p className="text-on-dark-muted text-sm leading-relaxed mb-5">
                 Axarat gives fresh produce importers real-time visibility into
                 every container&apos;s cold chain status — so temperature
                 problems surface before the fruit arrives.
                 <br />
-                <span className="text-white/90 font-semibold">
+                <span className="text-on-dark font-semibold">
                   Reply to this email or visit axarat.com
                 </span>
               </p>
@@ -788,8 +750,7 @@ function ResultsScreen({
                 href="https://axarat.com/#contact"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-[#0b0f1a] font-bold text-sm px-6 py-3 rounded-lg transition-all hover:scale-105 active:scale-95"
-                style={{ backgroundColor: "#00e5c8" }}
+                className="btn-primary inline-flex items-center gap-2 text-sm px-6 py-3 transition-all hover:scale-105 active:scale-95"
               >
                 See how Axarat works →
               </a>
@@ -807,8 +768,7 @@ function ResultsScreen({
               setShowReport(true);
               setTimeout(() => reportRef.current?.select(), 100);
             }}
-            className="flex-1 flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border-2 font-bold text-sm transition-all hover:scale-105 active:scale-95 bg-white"
-            style={{ borderColor: "#0b0f1a", color: "#0b0f1a" }}
+            className="btn-secondary flex-1 flex items-center justify-center gap-2 px-6 py-3.5 font-bold text-sm transition-all hover:scale-105 active:scale-95"
           >
             <svg
               className="w-4 h-4"
@@ -827,7 +787,7 @@ function ResultsScreen({
           </button>
           <button
             onClick={onRetake}
-            className="flex-1 flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border-2 border-gray-200 font-bold text-sm text-gray-600 transition-all hover:border-gray-300 hover:bg-white active:scale-95"
+            className="btn-secondary flex-1 flex items-center justify-center gap-2 px-6 py-3.5 font-bold text-sm transition-all active:scale-95"
           >
             <svg
               className="w-4 h-4"
@@ -848,15 +808,18 @@ function ResultsScreen({
 
         {/* Report textarea */}
         {showReport && (
-          <div className="bg-white rounded-2xl border border-gray-200 p-6 animate-fade-in-up">
+          <div className="card p-6 animate-fade-in-up">
             <div className="flex items-center justify-between mb-3">
-              <h3 className="font-bold text-gray-800 text-sm">
+              <h3 className="font-bold text-on-dark text-sm">
                 Your Report — Copy and Share
               </h3>
               <button
                 onClick={handleCopy}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all hover:scale-105 active:scale-95"
-                style={{ backgroundColor: copied ? "#16a34a" : "#00e5c8", color: copied ? "#ffffff" : "#0b0f1a" }}
+                className={`flex items-center gap-1.5 px-4 py-2 text-xs font-bold transition-all hover:scale-105 active:scale-95 ${
+                  copied
+                    ? "rounded-md border border-success bg-success text-navy"
+                    : "btn-secondary"
+                }`}
               >
                 {copied ? (
                   <>
@@ -879,7 +842,7 @@ function ResultsScreen({
               ref={reportRef}
               readOnly
               value={reportText}
-              className="w-full h-64 text-xs font-mono text-gray-600 bg-gray-50 border border-gray-200 rounded-lg p-3 resize-none focus:outline-none"
+              className="input w-full h-64 text-xs font-mono p-3 resize-none"
             />
           </div>
         )}
